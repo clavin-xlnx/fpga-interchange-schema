@@ -68,6 +68,7 @@ struct Netlist {
   topInst   @5 : CellInstance;
   instList  @6 : List(CellInstance);
   cellList  @7 : List(Cell);
+  shapeList @8 : List(Shape);
 
   struct CellDeclaration {
     name     @0 : StringIdx $stringRef();
@@ -165,6 +166,19 @@ struct Netlist {
         boolValue      @3 : Bool;
         bitstringValue @4 : Bitstring;
       }
+    }
+  }
+
+  struct Shape {
+    cells  @0 : List(ShapeElement);
+    height @1 : UInt32;
+    width  @2 : UInt32;
+    struct ShapeElement {
+      cellName  @0 : StringIdx $stringRef();
+      belName   @1 : StringIdx $stringRef();
+      siteTypes @2 : List(Text) $hashSet();
+      dx        @3 : UInt32;
+      dy        @4 : UInt32;
     }
   }
 }
