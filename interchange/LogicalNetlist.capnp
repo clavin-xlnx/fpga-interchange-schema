@@ -173,12 +173,14 @@ struct Netlist {
     cells  @0 : List(ShapeElement);
     height @1 : UInt32;
     width  @2 : UInt32;
+    tags   @3 : List(StringIdx) $stringRef();
     struct ShapeElement {
       cellName  @0 : StringIdx $stringRef();
       belName   @1 : StringIdx $stringRef();
-      siteTypes @2 : List(Text) $hashSet();
+      siteTypes @2 : List(StringIdx) $stringRef();
       dx        @3 : UInt32;
       dy        @4 : UInt32;
     }
   }
 }
+
